@@ -119,7 +119,12 @@ async function loadSheet() {
       });
       if (productCol === -1) return;
 
-      const styledCols = headers.map(function(_, i) { return i; }).filter(function(i) { return i !== productCol; });
+      const styledWithCol = headers.findIndex(function(h) {
+        return h.includes('styled with');
+      });
+      if (styledWithCol === -1) return;
+
+      const styledCols = [styledWithCol];
 
       rows.slice(1).forEach(function(row) {
         const product = String(row[productCol] || '').trim();
