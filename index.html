@@ -179,6 +179,17 @@
 
   .styled-chip:last-child { border-bottom: none; }
 
+  .card-location {
+    font-size: 12px;
+    color: #B0ADA6;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #F0EDE8;
+    font-style: italic;
+  }
+
   .empty {
     text-align: center;
     padding: 64px 20px;
@@ -320,6 +331,17 @@ function setMode(m) {
   doSearch();
 }
 
+function colIndexToLetter(idx) {
+  let letter = '';
+  idx = idx + 1;
+  while (idx > 0) {
+    const rem = (idx - 1) % 26;
+    letter = String.fromCharCode(65 + rem) + letter;
+    idx = Math.floor((idx - 1) / 26);
+  }
+  return letter;
+}
+
 function doSearch() {
   const query = document.getElementById('searchInput').value.trim();
   const statusEl = document.getElementById('status');
@@ -363,7 +385,7 @@ function doSearch() {
       (m.styledWith.length > 0
         ? '<div class="card-label">Styled with</div><div class="styled-list">' +
           m.styledWith.map(function(s) { return '<span class="styled-chip">' + s + '</span>'; }).join('') +
-          '</div>'
+          '</div><div class="card-location">You can find ' + m.product + ' in Tab Named <strong>' + m.tab + '</strong> and Column ' + m.ref + '.</div>'
         : '<div style="font-size:13px;color:#B0ADA6;font-weight:300">No styling info available</div>') +
       '</div>';
   }).join('');
