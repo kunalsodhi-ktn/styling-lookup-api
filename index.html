@@ -115,12 +115,12 @@ async function loadSheet() {
 
       const headers = rows[0].map(function(h) { return String(h).trim().toLowerCase(); });
       const productCol = headers.findIndex(function(h) {
-        return h.includes('product') || h.includes('name') || h.includes('item');
+        return h === 'final product name';
       });
       if (productCol === -1) return;
 
       const styledWithCol = headers.findIndex(function(h) {
-        return h.includes('styled with');
+        return h === 'styled with';
       });
       if (styledWithCol === -1) return;
 
