@@ -373,7 +373,7 @@ function doSearch() {
 
   if (matches.length === 0) {
     statusEl.textContent = 'No results for "' + query + '"';
-    resultsEl.innerHTML = '<div class="empty">No products found matching "' + query + '"</div>';
+    resultsEl.innerHTML = '<div class="empty">No Styled With information found matching "' + query + '"</div>';
     return;
   }
 
@@ -385,7 +385,7 @@ function doSearch() {
       (m.styledWith.length > 0
         ? '<div class="card-label">Styled with</div><div class="styled-list">' +
           m.styledWith.map(function(s) { return '<span class="styled-chip">' + s + '</span>'; }).join('') +
-          '</div><div class="card-location">You can find ' + m.product + ' in Tab Named <strong>' + m.tab + '</strong> and Column ' + m.ref + '.</div>'
+          '</div><div class="card-location">You can find ' + m.product + ' in Tab Named <strong>' + m.tab + '</strong>.</div>'
         : '<div style="font-size:13px;color:#B0ADA6;font-weight:300">No styling info available</div>') +
       '</div>';
   }).join('');
